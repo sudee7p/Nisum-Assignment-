@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo List</title>
+</head>
+<body>
+  <h1>Todo List</h1>
+  <input type="text" id="todoInput" placeholder="Enter task" />
+  <button onclick="addTodo()">Add</button>
+
+  <ul id="todoList"></ul>
+
+  <script>
+    // Hoisted function
+    addTodo; // Declared later
+
+    // Array to hold todos
+    const todos = [];
+
+    // Function to add a todo
+    function addTodo() {
+      const input = document.getElementById("todoInput");
+      const title = input.value.trim();
+      if (title === "") {
+        alert("Please enter a task.");
+        return;
+      }
+
+      const todo = {
+        id: Date.now(),
+        title: title,
+        completed: false
+      };
+
+      todos.push(todo);
+      input.value = "";
+      renderTodos();
+    }
+
+    // Function to delete a todo
+    function deleteTodo(id) {
+      const index = todos.findIndex(todo => todo.id === id);
+      if (index !== -1) {
+        todos.splice(index, 1);
+        renderTodos();
+      }
+    }
+
+    // Function to toggle completion
+    function toggleComplete(id) {
+      for (let todo of todos) {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+          break;
+        }
+      }
+      renderTodos();
+    }
+
+    // Function to render todos
+    function renderTodos() {
+      const list = document.getElementById("todoList");
+      list.innerHTML = "";
+
+      for (let todo of todos) {
+        const li = document.createElement("li");
+        li.textContent = todo.title;
+        li.style.textDecoration = todo.completed ? "line-through" : "none";
+
+        const completeBtn = document.createElement("button");
+        completeBtn.textContent = todo.completed ? "Undo" : "Complete";
+        completeBtn.onclick = () => toggleComplete(todo.id);
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.onclick = () => deleteTodo(todo.id);
+
+        li.appendChild(completeBtn);
+        li.appendChild(deleteBtn);
+        list.appendChild(li);
+      }
+    }
+  </script>
+</body>
+</html>

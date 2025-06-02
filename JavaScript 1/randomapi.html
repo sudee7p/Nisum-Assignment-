@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fetch Random User</title>
+</head>
+<body>
+  <h1>Random User Info</h1>
+  <button id="fetch-btn">Fetch User</button>
+  <div id="user-info"></div>
+
+  <script>
+    const fetchButton = document.getElementById('fetch-btn');
+    const userInfo = document.getElementById('user-info');
+
+    function fetchRandomUser() {
+      fetch('https://randomuser.me/api/')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          const user = data.results[0];
+          console.log(data)
+          userInfo.innerHTML = `
+            <p><strong>Name:</strong> ${user.name.first} ${user.name.last}</p>
+            <p><strong>Email:</strong> ${user.email}</p>
+            <p><strong>Location:</strong> ${user.location.city}, ${user.location.country}</p>
+            <img src="${user.picture.medium}" alt="User picture"/>
+          `;
+        })
+        .catch(error => {
+          userInfo.innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
+        });
+    }
+
+    fetchButton.addEventListener('click', fetchRandomUser);
+  </script>
+</body>
+</html>
+
