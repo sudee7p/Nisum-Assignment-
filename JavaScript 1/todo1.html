@@ -11,13 +11,10 @@
   <ul id="todoList"></ul>
 
   <script>
-    // Hoisted function
-    addTodo; // Declared later
+    addTodo; 
 
-    // Array to hold todos
     const todos = [];
 
-    // Function to add a todo
     function addTodo() {
       const input = document.getElementById("todoInput");
       const title = input.value.trim();
@@ -37,7 +34,6 @@
       renderTodos();
     }
 
-    // Function to delete a todo
     function deleteTodo(id) {
       const index = todos.findIndex(todo => todo.id === id);
       if (index !== -1) {
@@ -45,8 +41,6 @@
         renderTodos();
       }
     }
-
-    // Function to toggle completion
     function toggleComplete(id) {
       for (let todo of todos) {
         if (todo.id === id) {
@@ -57,7 +51,6 @@
       renderTodos();
     }
 
-    // Function to render todos
     function renderTodos() {
       const list = document.getElementById("todoList");
       list.innerHTML = "";
