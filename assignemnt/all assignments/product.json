@@ -1,0 +1,5 @@
+[
+  { "id": 1, "name": "iPhone 14", "price": 799, "description": "Latest iPhone model", "image": "https://via.placeholder.com/150", "stock": true },
+  { "id": 2, "name": "MacBook Pro", "price": 1299, "description": "Apple laptop", "image": "https://via.placeholder.com/150", "stock": false },
+  { "id": 3, "name": "AirPods Pro", "price": 199, "description": "Wireless earbuds", "image": "https://via.placeholder.com/150", "stock": true }
+]
