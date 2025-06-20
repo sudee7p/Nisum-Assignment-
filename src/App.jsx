@@ -1,14 +1,12 @@
-import './App.css';
-import Greeting from './components/greetings';
+import React from 'react';
+import TodoApp from './todo';
 
 function App() {
-  
   return (
-    <>
-      <h1>Day -1</h1>
-
-    </>
-  )
+    <div>
+      <TodoApp />
+    </div>
+  );
 }
 
-export default App
+export default App;
