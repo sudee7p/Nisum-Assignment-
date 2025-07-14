@@ -1,0 +1,25 @@
+dn: dc=springframework,dc=org
+objectclass: top
+objectclass: domain
+dc: springframework
+
+dn: ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: organizationalUnit
+ou: people
+
+dn: uid=john,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+cn: John Doe
+sn: Doe
+uid: john
+userPassword: password
+
+dn: uid=admin,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+cn: Admin User
+sn: Admin
+uid: admin
+userPassword: admin123
